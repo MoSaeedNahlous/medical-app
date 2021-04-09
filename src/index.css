@@ -1,13 +1,179 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.nav-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background:#c7d7ff ;
+    justify-content: space-around;
+    align-items: center;
+    
+    height: 5em;
+    
+    
+}
+.nav-container img{
+    
+    cursor: pointer;
+    margin-left: 1%;
+    
+    overflow: hidden;
+    
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.nav-container ul{
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: flex-end;
+    flex-grow: 2;
+    
 }
+
+.nav-container ul li{
+    list-style: none;
+    margin-left:3%;
+    margin-right: 3%;
+    cursor: pointer;
+    height: fit-content;
+    
+    
+    
+}
+.nav-container ul li:hover{
+    color: white;
+}
+.nav-container ul li:last-child{
+    margin-right:10%;
+    
+}
+.nav-container input{
+    height: 30px;
+    width: 25%;
+   
+    border-radius: 5px;
+    margin-left: 3%;
+    border: rgb(45, 195, 255);
+    padding: 10px;
+
+}
+
+.nav-container span{
+    font-size: 3.3em;
+   
+    margin-left: 0.8%;
+    cursor: pointer;
+    
+}
+
+.footer{
+  margin-top: 100px;
+  padding: 3%;
+  
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+}
+.footer-container{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content:space-between ;
+  border-bottom: 0.5px solid black;
+}
+.footer-list{
+  width: 10%;
+}
+.footer-list ul{
+  list-style: none;
+}
+
+.footer-list ul li{
+  margin: 2%;
+}
+.footer-list ul li:first-child{
+  font-weight: bolder;
+}
+.footer-icon-list{
+  width: 13%;
+}
+.footer-icon-list ul{
+  list-style: none;
+}
+.footer-end{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  justify-items: center;
+}
+.footer-end ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  width: 40%;
+}
+.full-footer{
+  background-color:#c7d7ff ;
+  padding-bottom: 1%;
+}
+
+.slider-rep{
+  width: 100%;
+  height: 5%;
+}
+
+
+/* //////side menu/////// */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
