@@ -32,7 +32,7 @@ export const QuestionGlobalProvider = ({ children }) => {
             dispatch({
                 type: 'GET_ALL_QUESTIONS',
                 //check if payload is res or res.data
-                payload:res
+                payload:res.data
                 
             })
         }).catch((err) => {

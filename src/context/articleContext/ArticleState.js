@@ -32,7 +32,7 @@ export const ArticleGlobalProvider = ({ children }) => {
             dispatch({
                 type: 'GET_ALL_ARTICLES',
                 //check if payload is res or res.data
-                payload:res
+                payload:res.data
                 
             })
         }).catch((err) => {

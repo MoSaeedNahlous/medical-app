@@ -1,20 +1,26 @@
 import React, { Fragment } from 'react'
+import image from '../../../res/images/default-user-image.jpg'
+import cover from '../../../res/images/article-cover.jpg'
 
-const article = () => {
+const Article = ({subject,text,date,views}) => {
     return (
         <Fragment>
             <div className="article-main-container">
-                <h3>Title goes here</h3>
-                <h5>Auhtor Name goes here</h5>
-                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Illum voluptatum dicta vitae,
-                    blanditiis animi aperiam fuga minima magni!
-                    Porro laborum harum distinctio magni.
-                    Iusto, reiciendis quaerat impedit quas esse molestias!</p>
+                <img src={image} className="doctor-image" alt="user picture" width="40px" height="40px" />
+                <h4 className="publisher-name">publisher name here</h4>
+                <br />
+                <h6>{date}</h6>
+                <br />
+                <img src={cover} alt="cover image" className="cover-image" width="100%" height="50%"/>
+                <br/>
+                <h3>{subject}</h3>
+                <p> {text}</p>
+                <button className="read-more">Read More..</button>
+                <i className="fa fa-eye views" aria-hidden="true">{views}</i>
             </div>
         </Fragment>
     )
 }
 
-export default article
+export default Article
 
