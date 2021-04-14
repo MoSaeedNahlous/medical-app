@@ -21,6 +21,11 @@ export default (state, action) => {
                 ...state,
                 reply:action.payload
             }
+        case 'GET_REPLIES_FOR_QUESTION':
+            return {
+                ...state,
+                replies:state.replies.filter((reply)=>reply.question===action.payload)
+            }
         case 'GET_REPLIES_COUNT':
             return {
                 ...state,
@@ -29,7 +34,7 @@ export default (state, action) => {
         case 'DELETE_REPLY_BY_ID':
             return {
                 ...state,
-                replies:state.replies.filter((reply)=>{reply.id !== action.payload})
+                replies:state.replies.filter((reply)=>reply.id !== action.payload)
             }
         case 'DELETE_REPLIES':
             return {

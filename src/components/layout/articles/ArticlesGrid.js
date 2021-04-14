@@ -28,6 +28,7 @@ const ArticlesGrid = () => {
                                 text={article.text}
                                 subject={article.subject}
                                 views={article.views}
+                                id={article.id}
                             />)
                         }   
                         )

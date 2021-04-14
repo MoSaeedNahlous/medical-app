@@ -29,6 +29,7 @@ const QuestionsGrid = () => {
                                 text={question.text}
                                 subject={question.subject}
                                 views={question.views}
+                                id={question.id}
                             />)
                         }   
                         )

@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import img from '../../../res/images/default-user-image.jpg'
 
-const Question = ({text,date,image,views,subject}) => {
+const Question = ({text,date,id,views,subject}) => {
     return (
         <div className="question-main-container">
             <h5>{subject}</h5>
@@ -21,7 +22,7 @@ const Question = ({text,date,image,views,subject}) => {
             <div className="question-footer">
                 <h6>{date}</h6>
                 <i className="fa fa-eye" aria-hidden="true">{views}</i>
-                <button>see all details</button>
+                <button><Link to={`/question/${id}`}>see all details</Link></button>
                 
             </div>
         </div>

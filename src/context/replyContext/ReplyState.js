@@ -43,7 +43,7 @@ export const ReplyGlobalProvider = ({ children }) => {
     const GetReplyById = (replyId) => {
         axios.get(`/api/reply/findById/${replyId}`).then((res) => {
             dispatch({
-                type: 'GET_REPLT_BY_ID',
+                type: 'GET_REPLY_BY_ID',
                 //check if payload is res or res.data
                 payload:res
             })
@@ -51,6 +51,14 @@ export const ReplyGlobalProvider = ({ children }) => {
             throw err
         })
     }
+
+    const GetRepliesForQuestion = (questionId) => {
+        dispatch({
+            type: "GET_REPLIES_FOR_QUESTION",
+            payload:questionId
+        })
+    }
+        
 
     const CountReplies = () => {
         axios.get('/api/reply/count').then(res => {
@@ -105,7 +113,8 @@ export const ReplyGlobalProvider = ({ children }) => {
             GetReplyById,
             CountReplies,
             DeleteAllReplies,
-            DeleteReplyById
+            DeleteReplyById,
+            GetRepliesForQuestion
         }}
     >
         {children}

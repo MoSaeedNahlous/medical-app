@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { UserGlobalContext } from '../../context/userContext/UserState'
 import Recaptcha from 'react-recaptcha'
 import { Link, useHistory } from 'react-router-dom'
+import { UserGlobalContext } from '../../context/userContext/UserState'
 
-
-const SignUpForm = () => {
-
-    const isVerified = useRef(false)
+const DocSignUpForm = () => {
+const isVerified = useRef(false)
     const context = useContext(UserGlobalContext)
 
     const { AddUser } = context
@@ -70,7 +68,7 @@ const SignUpForm = () => {
     return (
         <div>
             <form id="signup-form" onSubmit={onSubmitHandler}>
-            <h1>Sign Up</h1>
+            <h1>Sign Up for Doctors</h1>
             <label>First Name</label>
             <input type="text" name="firstName" placeholder="First Name" onChange={onChangeHandler} required/>
             <br />
@@ -97,8 +95,11 @@ const SignUpForm = () => {
             </select>
             <br />
             <label>BirthDate</label>
-            <input type="date" name="birthDate" onChange={onChangeHandler} required/>
+            <input type="date" name="birthDate" onChange={onChangeHandler}  required/>
                 <br />
+                <label>Specialized</label>
+                <input type="text" name="birthDate" onChange={onChangeHandler} placeholder="specialized" required />
+                <br/>
                 <div>
                     <Recaptcha
                         sitekey='6Ler_qMaAAAAAF-fudkxWddQyF_Jr5KHgu3nnLeJ'
@@ -116,4 +117,4 @@ const SignUpForm = () => {
     )
 }
 
-export default SignUpForm
+export default DocSignUpForm
