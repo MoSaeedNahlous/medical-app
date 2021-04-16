@@ -6,12 +6,13 @@
 }
 body{
   width: 100%;
+  background-image: url('./res/images/bg.svg');
 }
 .nav-container{
     display: flex;
     flex-direction: row;
     width: 100%;
-    background:#c7d7ff ;
+    background:#23A5EB ;
     justify-content: space-around;
     align-items: center;
     
@@ -123,7 +124,7 @@ body{
   width: 40%;
 }
 .full-footer{
-  background-color:#c7d7ff ;
+  background-color:#bfced6 ;
   padding-bottom: 1%;
 }
 
@@ -165,7 +166,19 @@ body{
 .articles-grid-container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr ;
+  grid-template-rows: 1fr ;
+  margin-left: 5%;
+  margin-right:5% ;
+  width: 90%;
+  grid-gap: 3%;
+  height: auto;
+  padding-bottom: 10%;
+  padding-top: 2%;
+}
+.articles-main-grid-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 1fr  ;
   margin-left: 5%;
   margin-right:5% ;
   width: 90%;
@@ -177,7 +190,7 @@ body{
 .questions-grid-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr ;
   margin-left: 5%;
   margin-right:5% ;
   width: 90%;
@@ -246,6 +259,112 @@ Link,a{
   width: 90%;
   margin: 5%;
   padding: 3%;
+}
+
+#signup-form{
+  
+  width:50%;
+  margin:auto;
+  padding: 3%
+}
+
+#signup-form > div{
+  margin-top:3%;
+  margin-bottom:3%;
+  margin-right: auto;
+  margin-left: auto;
+  width:60%;
+  height: 5%;
+  display: flex;
+  justify-content:space-between ;
+}
+#signup-form > div >label{
+  font-weight: bold;
+}
+
+#signup-form > div >input{
+  height:25px ;
+  width:55% ;
+  justify-self: self-start;
+}
+#signup-form > div >select{
+  height:25px ;
+  width:55% ;
+  justify-self: self-start;
+}
+
+#signup-form > div >button{
+  height:38px ;
+  width:100% ;
+  justify-self: self-start;
+  background-color: #23A5EB;
+  color: white;
+  font-weight: bold;
+}
+ .here{
+   text-decoration: underline;
+ }
+ #signin-form{
+  
+  width:50%;
+  margin:auto;
+  padding: 3%
+}
+
+#signin-form > div{
+  margin-top:3%;
+  margin-bottom:3%;
+  margin-right: auto;
+  margin-left: auto;
+  width:60%;
+  height: 5%;
+  display: flex;
+  justify-content:space-between ;
+}
+#signin-form > div >label{
+  font-weight: bold;
+}
+
+#signin-form > div >input{
+  height:25px ;
+  width:55% ;
+  justify-self: self-start;
+}
+#signin-form > div >select{
+  height:25px ;
+  width:55% ;
+  justify-self: self-start;
+}
+
+#signin-form > div >button{
+  height:38px ;
+  width:100% ;
+  justify-self: self-start;
+  background-color: #23A5EB;
+  color: white;
+  font-weight: bold;
+}
+
+.add-article{
+  width: 90%;
+  margin:auto;
+  padding: 1%;
+}
+.add-article > div {
+  margin: 1%;
+  width: 60%;
+  margin: auto;
+}
+.add-article > div >input{
+  width: 90%;
+  height: 30px;
+  margin: 1%;
+}
+.add-article > div> button {
+  float: right;
+  width:10%;
+  padding: 1%;
+  margin-right: 5%;
 }
 
 

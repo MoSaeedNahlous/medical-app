@@ -1,32 +1,36 @@
-import React, { useContext, useEffect } from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
+import { ArticleGlobalContext } from '../../../context/articleContext/ArticleState'
+import Footer from '../../Footer'
+import Header from '../../Header'
+import AddArticle from './AddArticle'
 import Article from './Article'
-import { ArticleGlobalContext} from '../../../context/articleContext/ArticleState'
-import { useHistory } from 'react-router'
+import ArticlesGrid from './ArticlesGrid'
 
-const ArticlesGrid = () => {
-    const history =useHistory()
+const ArticlesPage = () => {
     const context = useContext(ArticleGlobalContext)
-    const { GetAllArticles, articles } = context
-    const goToArticles = () => {
-        history.push('/articles')
-    }
+    const { articles,GetAllArticles } = context
 
     useEffect(() => {
         GetAllArticles()
     }, [])
 
-    while (articles === null) {
-        return (
-            <h1>Loading..</h1>
-        )
-    }
+    while(articles === null) {
+        return(<h1>Loading...</h1>)
+    } 
+        
+    
+    
     return (
-        <div style={{paddingTop:'8%'}}>
+        <Fragment>
+            <Header />
+            <br />
+            <AddArticle />
+            <br/>
             <h2>Articles</h2>
         <div className="articles-grid-container">
                 {
                     articles === [] ? (<h2>No articles to be found..</h2>) : (
-                        articles.slice(0,3).map((article) => {
+                        articles.map((article) => {
                             return (<Article key={article.id}
                                 date={article.date}
                                 text={article.text}
@@ -40,12 +44,9 @@ const ArticlesGrid = () => {
             }
             
             </div>
-
-            <div>
-                <button onClick={goToArticles}>More</button>
-            </div>
-        </div>
+            <Footer />
+        </Fragment>
     )
 }
 
-export default ArticlesGrid
+export default ArticlesPage

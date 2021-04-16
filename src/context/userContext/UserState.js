@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 
-const intialState = { user: null,users:null,usersCounter:null }
+const intialState = { user: null,users:null,usersCounter:null,isAuth:false }
 
 export const UserGlobalContext = createContext(intialState);
 
@@ -13,22 +13,60 @@ export const UserGlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(UserReducer, intialState)
 
     const AddUser = (userData) => {
-        axios.post('/api/user/save', userData).then((res) => {
-            console.log(res);
+        axios.post('/auth/save', userData).then((res) => {
             dispatch({
-                type: 'ADD_USER',
-                //check if payload is res or res.data
-                payload:res
-                
+                type: 'ADD_USER'
             })
         }).catch((err) => {
             throw err
         })
     }
 
+    const LoadUser = async () => {
+        axios.get('/auth/me',
+            {
+                headers: {
+                    'x-access-token': localStorage.getItem('jwtToken')
+                }
+            }).then(res => {
+                dispatch({
+                    type: 'LOAD_USER',
+                    payload:res.data
+                })
+            }).catch(err => {
+                dispatch({
+                    type: 'AUTH_ERROR'
+                })
+            })
+  };
+
+    const Login = (userData) => {
+        axios.post('/auth/login', userData).then((res) => {
+            dispatch({
+                type: 'LOGIN_USER',               
+                payload:res.data.token})
+            localStorage.setItem('jwtToken', res.data.token);
+            LoadUser()
+        }).catch((err) => {
+            if (err.response.status === 404) {
+                alert("User Not available!,check the entered email..")
+                dispatch({type: 'AUTH_ERROR'})
+            } else if(err.response.status === 401) {
+                alert("check the entered password..")
+                dispatch({type: 'AUTH_ERROR'})
+            }
+            
+        })
+    }
+
+    const Logout = () => {
+        dispatch({type: 'LOGOUT_USER'})
+    }
+
+    
+
     const GetAllUsers = () => {
         axios.get('/api/user/findAll').then((res) => {
-            console.log(res);
             dispatch({
                 type: 'GET_ALL_USERS',
                 //check if payload is res or res.data
@@ -98,9 +136,13 @@ export const UserGlobalProvider = ({ children }) => {
             user: state.user,
             users: state.users,
             usersCounter: state.usersCounter,
+            isAuth:state.isAuth,
             
 
             AddUser,
+            Login,
+            Logout,
+            LoadUser,
             GetAllUsers,
             GetUserById,
             CountUsers,

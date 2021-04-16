@@ -14,7 +14,6 @@ export const ReplyGlobalProvider = ({ children }) => {
 
     const AddReply = (replyData) => {
         axios.post('/api/reply/save', replyData).then((res) => {
-            console.log(res);
             dispatch({
                 type: 'ADD_REPLY',
                 //check if payload is res or res.data
@@ -28,11 +27,9 @@ export const ReplyGlobalProvider = ({ children }) => {
 
     const GetAllReplies = () => {
         axios.get('/api/reply/findAll').then((res) => {
-            console.log(res);
             dispatch({
                 type: 'GET_ALL_REPLIES',
-                //check if payload is res or res.data
-                payload:res
+                payload:res.data
                 
             })
         }).catch((err) => {

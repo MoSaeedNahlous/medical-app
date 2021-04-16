@@ -13,13 +13,14 @@ export const QuestionGlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(QuestionReducer, intialState)
 
     const AddQuestion = (questionData) => {
-        axios.post('/api/question/save', questionData).then((res) => {
-            console.log(res);
+        axios.post('/api/question/save', questionData, {
+            headers: {
+            "x-access-token":localStorage.getItem('jwtToken')
+            }
+        }).then((res) => {
             dispatch({
                 type: 'ADD_QUESTION',
-                //check if payload is res or res.data
-                payload:res
-                
+                payload:res.data
             })
         }).catch((err) => {
             throw err
@@ -28,12 +29,9 @@ export const QuestionGlobalProvider = ({ children }) => {
 
     const GetAllQuestions = () => {
         axios.get('/api/question/findAll').then((res) => {
-            console.log(res);
             dispatch({
                 type: 'GET_ALL_QUESTIONS',
-                //check if payload is res or res.data
-                payload:res.data
-                
+                payload:res.data 
             })
         }).catch((err) => {
             throw err
@@ -45,7 +43,7 @@ export const QuestionGlobalProvider = ({ children }) => {
             dispatch({
                 type: 'GET_QUESTION_BY_ID',
                 //check if payload is res or res.data
-                payload:res
+                payload:res.data
             })
         }).catch((err) => {
             throw err
@@ -57,7 +55,7 @@ export const QuestionGlobalProvider = ({ children }) => {
             dispatch({
                 type: 'GET_QUESTIONS_COUNT',
                 //check if payload is res or res.data
-                payload:res
+                payload:res.data
             })
         }).catch((err) => {
             throw err
@@ -69,7 +67,7 @@ export const QuestionGlobalProvider = ({ children }) => {
             dispatch({
                 type: 'DELETE_QUESTION_BY_ID',
                 //check if payload is res or res.data
-                payload:res
+                payload:res.data
             })
         }).catch((err) => {
             throw err
@@ -82,7 +80,7 @@ export const QuestionGlobalProvider = ({ children }) => {
             dispatch({
                 type: 'DELETE_ALL_QUESTIONS',
                 //check if payload is res or res.data
-                payload:res
+                payload:res.data
             })
         }).catch((err) => {
             throw err

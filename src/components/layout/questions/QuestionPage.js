@@ -8,32 +8,32 @@ import Reply from '../replies/Reply'
 
 const QuestionPage = ({ match }) => {
     const context = useContext(QuestionGlobalContext)
-    const context2 = useContext(ReplyGlobalContext)
+    // const context2 = useContext(ReplyGlobalContext)
 
     const { GetQuestionById, question } = context
-    const {AddReply,GetRepliesForQuestion,replies} = context2
+    // const {AddReply,GetRepliesForQuestion,replies} = context2
     
     
     useEffect(() => {
         GetQuestionById(match.params.id)
-        GetRepliesForQuestion(match.params.id)    
+        // GetRepliesForQuestion(match.params.id)    
     }, [])
 
-    const [ReplyState, setReplyState] = useState({text:'',date:null,questionId:'',authorId:''})
+    // const [ReplyState, setReplyState] = useState({text:'',date:null,questionId:'',authorId:''})
 
     const onChangeHandler = (e) => {
-        setReplyState({...ReplyState,[e.target.name]:e.target.value})
+        // setReplyState({...ReplyState,[e.target.name]:e.target.value})
     }
 
-    const onSubmitHandler = (e) => {
-        e.preventDefault();
-        setReplyState({
-            ...ReplyState, date: Date.now()
-            // ,author:''
-        })
-        AddReply(ReplyState)
-        document.getElementById('reply-form').reset()
-    }
+     const onSubmitHandler = (e) => {
+    //     e.preventDefault();
+    //     setReplyState({
+    //         ...ReplyState, date: Date.now()
+    //         // ,author:''
+    //     })
+    //     AddReply(ReplyState)
+    //     document.getElementById('reply-form').reset()
+     }
 
     while (question === null) {
         return(<h1>Loading</h1>)
@@ -43,12 +43,14 @@ const QuestionPage = ({ match }) => {
     return (
         <Fragment>
             <Header />
+            <br/>
         <div>
-            <h2>{question.data.subject}</h2>
-            <p>{question.data.date},{question.data.views}</p>
-            <div className="article-img">
+                <h2>{question.data.subject}</h2>
+                <br/>
+            <p style={{color:'grey'}}>{question.data.date} , <i class="fa fa-eye" aria-hidden="true">{question.data.views}</i> </p>
+            {/* <div className="article-img">
                 <img src={img} alt="article image" width="100%" height="20%"/>
-            </div>
+            </div> */}
             <br />
             <div>
                 {question.data.text}
@@ -68,9 +70,9 @@ const QuestionPage = ({ match }) => {
                     <button>Reply</button>
                 </form>    
             </div>
-            {replies.map(reply => {
+            {/* {replies.map(reply => {
                 return <Reply />
-            })}
+            })} */}
             <Footer/>
         </Fragment>
     )

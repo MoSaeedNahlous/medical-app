@@ -13,7 +13,9 @@ export default (state, action) => {
         case 'GET_ALL_ARTICLES':
             return {
                 ...state,
-                articles:action.payload
+                articles: action.payload.sort((a, b) => {
+                    return b.views - a.views
+                })
             }
         
         case 'GET_ARTICLE_BY_ID':

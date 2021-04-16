@@ -1,33 +1,34 @@
-import React, { useContext, useEffect } from 'react'
-import Question from './Question'
-import { QuestionGlobalContext} from '../../../context/questionContext/QuestionState'
-import { useHistory } from 'react-router'
+import React, { Fragment, useContext, useEffect } from 'react'
+import Header from '../../Header'
+import { QuestionGlobalContext } from '../../../context/questionContext/QuestionState'
+import Question from '../../layout/questions/Question'
+import Footer from '../../Footer'
+import AddQuestion from './AddQuestion'
+const QuestionsPage = () => {
 
-
-const QuestionsGrid = () => {
-        const history = useHistory()
     const context = useContext(QuestionGlobalContext)
-    const {GetAllQuestions,questions } = context
-
+    const { questions,GetAllQuestions } = context
+    
     useEffect(() => {
         GetAllQuestions()
     }, [])
-    const goToQuestions = () => {
-        history.push('/questions')
-    }
 
     while (questions === null) {
-        return (
-            <h1>Loading..</h1>
-        )
+        return <h1>Loading..</h1>
     }
     return (
-        <div style={{paddingTop:'8%'}}>
+        <Fragment>
+            <Header />
+            <br />
+            {/* <AddArticle /> */}
+            <br />
+            <AddQuestion/>
+            <br/>
             <h2>Questions</h2>
         <div className="questions-grid-container">
                 {
                     questions === [] ? (<h2>No questions to be found..</h2>) : (
-                        questions.slice(0,2).map((question) => {
+                        questions.map((question) => {
                             return (<Question key={question.id}
                                 date={question.date}
                                 text={question.text}
@@ -41,10 +42,9 @@ const QuestionsGrid = () => {
             }
             
             </div>
-
-            <button onClick={goToQuestions}>More</button>
-        </div>
+            <Footer />
+        </Fragment>
     )
 }
 
-export default QuestionsGrid
+export default QuestionsPage

@@ -4,9 +4,7 @@ import cover from '../../../res/images/article-cover.jpg'
 import { Link, useHistory } from 'react-router-dom'
 
 const Article = ({ subject, text, date, views, id }) => {
-    useEffect(() => {
-        console.log(id);
-    }, [])
+
     return (
         <Fragment> 
             <div className="article-main-container">

@@ -6,8 +6,34 @@ export default (state, action) => {
 
         case 'ADD_USER':
             return {
+                ...state
+            }
+        
+        case 'LOAD_USER':
+            return {
                 ...state,
-                users:[action.payload,...state.users]
+                user: action.payload,
+                isAuth:true
+            }
+        
+        case 'LOGIN_USER':
+            localStorage.setItem('jwtToken', action.payload);
+            return {
+                ...state,
+                isAuth:true
+            }
+        case 'LOGOUT_USER':
+            localStorage.removeItem('jwtToken');
+            return {
+                ...state,
+                user:null
+            }
+        case 'AUTH_ERROR':
+            localStorage.removeItem('jwtToken');
+            return {
+                ...state,
+                isAuth: false,
+                user:null
             }
         
         case 'GET_ALL_USERS':

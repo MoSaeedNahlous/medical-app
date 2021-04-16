@@ -14,6 +14,9 @@ import { QuestionGlobalProvider } from './context/questionContext/QuestionState'
 import ArticlePage from './components/layout/articles/ArticlePage';
 import QuestionPage from './components/layout/questions/QuestionPage';
 import { ReplyGlobalProvider } from './context/replyContext/ReplyState';
+import DocSignUpPage from './components/SignIn-Up/DocSignUpPage';
+import ArticlesPage from './components/layout/articles/ArticlesPage';
+import QuestionsPage from './components/layout/questions/QuestionsPage';
 
 const App =()=> {
 
@@ -28,7 +31,10 @@ const App =()=> {
           <Route exact path='/' component={HomePage} />
           <Route exact path='/signin' component={SignInPage} />
           <Route exact path='/signup' component={SignUpPage} />
+          <Route exact path='/doc-signup' component={DocSignUpPage} />
+          <Route exact path='/articles' component={ArticlesPage} />      
           <Route exact path="/article/:id" component={ArticlePage} />
+          <Route exact path="/questions" component={QuestionsPage} /> 
           <Route exact path="/question/:id" component={QuestionPage} />         
 
           </Switch>

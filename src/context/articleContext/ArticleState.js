@@ -13,13 +13,15 @@ export const ArticleGlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(ArticleReducer, intialState)
 
     const AddArticle = (articleData) => {
-        axios.post('/api/article/save', articleData).then((res) => {
-            console.log(res);
+        axios.post('/api/article/save', articleData, {
+            headers: {
+            "x-access-token":localStorage.getItem('jwtToken')
+            }
+        }
+        ).then((res) => {
             dispatch({
                 type: 'ADD_ARTICLE',
-                //check if payload is res or res.data
-                payload:res
-                
+                payload:res.data
             })
         }).catch((err) => {
             throw err
@@ -28,7 +30,6 @@ export const ArticleGlobalProvider = ({ children }) => {
 
     const GetAllArticles = () => {
         axios.get('/api/article/findAll').then((res) => {
-            console.log(res);
             dispatch({
                 type: 'GET_ALL_ARTICLES',
                 //check if payload is res or res.data
@@ -42,10 +43,10 @@ export const ArticleGlobalProvider = ({ children }) => {
 
     const GetArticleById = (articleId) => {
         axios.get(`/api/article/findById/${articleId}`).then((res) => {
+            console.log(res.data);
             dispatch({
                 type: 'GET_ARTICLE_BY_ID',
-                //check if payload is res or res.data
-                payload:res
+                payload:res.data
             })
         }).catch((err) => {
             throw err
@@ -56,8 +57,7 @@ export const ArticleGlobalProvider = ({ children }) => {
         axios.get('/api/article/count').then(res => {
             dispatch({
                 type: 'GET_ARTICLES_COUNT',
-                //check if payload is res or res.data
-                payload:res
+                payload:res.data
             })
         }).catch((err) => {
             throw err
@@ -68,8 +68,7 @@ export const ArticleGlobalProvider = ({ children }) => {
         axios.delete(`/api/article/deleteById/${articleId}`).then((res) => {
             dispatch({
                 type: 'DELETE_ARTICLE_BY_ID',
-                //check if payload is res or res.data
-                payload:res
+                payload:res.data
             })
         }).catch((err) => {
             throw err
@@ -81,8 +80,7 @@ export const ArticleGlobalProvider = ({ children }) => {
         axios.delete(`/api/article/deleteAll`).then((res) => {
             dispatch({
                 type: 'DELETE_ALL_ARTICLES',
-                //check if payload is res or res.data
-                payload:res
+                payload:res.data
             })
         }).catch((err) => {
             throw err

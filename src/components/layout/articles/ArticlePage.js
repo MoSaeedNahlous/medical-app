@@ -22,14 +22,14 @@ const ArticlePage = ({ match }) => {
         <Fragment>
             <Header />
         <div>
-            <h2>{article.data.subject}</h2>
-            <p>{article.data.date},{article.data.views}</p>
+            <h2>{article.subject}</h2>
+            <p>{article.date},{article.views}</p>
             <div className="article-img">
                 <img src={img} alt="article image" width="100%" height="20%"/>
             </div>
             <br />
             <div>
-                {article.data.text}
+                {article.text}
             </div>
             <br />
             </div>

@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
 import logo from './../res/images/logo/default.png'
 import img from './../res/images/default-user-image.jpg'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { UserGlobalContext } from '../context/userContext/UserState';
 
 
 const openNav=()=> {
@@ -14,6 +15,22 @@ const closeNav=()=> {
 }
 
 const Header = () => {
+
+    const context = useContext(UserGlobalContext)
+    const { user, isAuth, Logout,LoadUser } = context
+    const history = useHistory()
+
+    useEffect(() => {
+        LoadUser()
+    }, [])
+
+    const logout = () => {
+        Logout()
+        history.push('/signin')
+    }
+    
+
+    
     return (
         <Fragment>
             <nav className="nav-container">
@@ -23,15 +40,22 @@ const Header = () => {
                 <input type="text" name="Search" id="" placeholder="Search in Medica.." />
                 <ul>
                     <li><Link to="/">Home</Link></li>
-                    <li>
+                     {(!isAuth) ? (null) : (
+                        <li>
                         <div style={{display:'flex'}}>
                             <img className="doctor-image" src={img} alt="" width="20px" height="20px" />
                             <Link to="/profile">My Profile</Link>
                         </div>
-                        </li>
-                    <li><Link to="/signin">Sign In</Link></li>
-                    <li><Link to="/signup">Sign Up</Link></li>
-                    <li><Link to="/signin">Sign Out</Link></li>
+                    </li>)}
+                    
+
+                    {(isAuth) ? (null) : (
+                        <li><Link to="/signin">Sign In</Link></li>)}
+                    {(isAuth) ? (null) : (
+                        <li><Link to="/signup">Sign Up</Link></li>)}
+                    {(!isAuth) ? (null) : (
+                        <li onClick={logout}><Link to="/signin">Sign Out</Link></li>)}
+                    
                     
                 </ul>
                 
@@ -39,10 +63,15 @@ const Header = () => {
             <div id="mySidenav" className="sidenav">
                 <Link  className="closebtn" onClick={closeNav}>&times;</Link>
                 <Link to="/">Home</Link>
-                <Link to="/profile">My Profile</Link>
-                <Link to="/signin">Sign In</Link>
-                <Link to="/signup">Sign Up</Link>
-                <Link to="/signin">Sign Out</Link>
+                {(!isAuth) ? (null) : (
+                        <Link to="/profile">My Profile</Link>)}
+                {(isAuth) ? (null) : (
+                        <Link to="/signin">Sign In</Link>)}
+                {(isAuth) ? (null) : (
+                    <Link to="/signup">Sign Up</Link>)}
+                {(!isAuth) ? (null) : (
+                        <Link onClick={logout} to="/signin">Sign Out</Link>)}
+                
             </div>
         </Fragment>
     )
