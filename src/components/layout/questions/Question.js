@@ -2,14 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import img from '../../../res/images/default-user-image.jpg'
 
-const Question = ({text,date,id,views,subject}) => {
+const Question = ({ text, date, id, views, subject }) => {
+    text = text.slice(0,150)
     return (
         <div className="question-main-container">
             <h5>{subject}</h5>
             <br />
             <br/>
-            <p>{text}</p>
-            <div className="question-answer-container">
+            <p>{text}   <span style={{fontWeight:'bolder'}}> check the full Question Below..</span></p>
+            {/* <div className="question-answer-container">
                 <fieldset style={{padding:'1%',borderRadius:'20px'}}>
                     <legend style={{ float: 'left' }}>this question answered by:</legend>
                     <br/>
@@ -18,10 +19,10 @@ const Question = ({text,date,id,views,subject}) => {
                     <br/>
                     <h6 className='doctor-domain'>doctor domain</h6>
                 </fieldset>
-            </div>
+            </div> */}
             <div className="question-footer">
-                <h6>{date}</h6>
-                <i className="fa fa-eye" aria-hidden="true">{views}</i>
+                <h6>{date} 📅 </h6>
+                <p >{views} 👀 </p>
                 <button><Link to={`/question/${id}`}>see all details</Link></button>
                 
             </div>

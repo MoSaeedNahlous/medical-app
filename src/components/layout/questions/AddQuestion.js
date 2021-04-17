@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { QuestionGlobalContext } from '../../../context/questionContext/QuestionState'
 import { UserGlobalContext } from '../../../context/userContext/UserState'
 
@@ -16,6 +16,21 @@ const AddQuestion = () => {
         views: 0,
         image: ''
     })
+    useEffect(() => {
+        if (context2.user !== null) {
+            var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+            today = mm + '/' + dd + '/' + yyyy;
+            setstate({
+            ...state,
+            author: context2.user.id,
+            date: today,
+         })
+            
+        }
+    }, [context2.user])
 
     const onChangeHandler = (e) => {
         setstate({...state,[e.target.name]:e.target.value})
@@ -27,12 +42,6 @@ const AddQuestion = () => {
     
     const onSubmitHandler = (e) => { 
         e.preventDefault()
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0');
-        var yyyy = today.getFullYear();
-        today = mm + '/' + dd + '/' + yyyy;
-        setstate({ ...state, date: today,author:user.id })
         AddQuestion(state)
         document.getElementById("add-question-form").reset()
         alert("Your Question Posted Successfully!!")

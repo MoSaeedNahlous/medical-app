@@ -7,7 +7,7 @@ export default (state, action) => {
         case 'ADD_QUESTION':
             return {
                 ...state,
-                questions:[action.payload,...state.questions]
+                questions:[...state.questions,action.payload]
             }
         
         case 'GET_ALL_QUESTIONS':

@@ -7,11 +7,12 @@ import {ArticleGlobalContext } from '../../../context/articleContext/ArticleStat
 const ArticlePage = ({ match }) => {
     const context = useContext(ArticleGlobalContext)
 
-    const { GetArticleById, article } = context
+    const { GetArticleById, article,incViews } = context
     
     
     useEffect(() => {
         GetArticleById(match.params.id)
+        incViews(match.params.id)
     }, [])
     while (article === null) {
         return(<h1>Loading</h1>)
@@ -22,13 +23,14 @@ const ArticlePage = ({ match }) => {
         <Fragment>
             <Header />
         <div>
-            <h2>{article.subject}</h2>
-            <p>{article.date},{article.views}</p>
-            <div className="article-img">
+                <h2>{article.subject}</h2>
+                <br/>
+            <p>{article.date}📅 ,{article.views}👀 </p>
+            {/* <div className="article-img">
                 <img src={img} alt="article image" width="100%" height="20%"/>
-            </div>
+            </div> */}
             <br />
-            <div>
+            <div className="question-text-block">
                 {article.text}
             </div>
             <br />

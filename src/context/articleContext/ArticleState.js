@@ -28,6 +28,10 @@ export const ArticleGlobalProvider = ({ children }) => {
         })
     }
 
+    const incViews = (id) => {
+        axios.get(`/api/article/incViews/${id}`)
+    }
+
     const GetAllArticles = () => {
         axios.get('/api/article/findAll').then((res) => {
             dispatch({
@@ -103,7 +107,8 @@ export const ArticleGlobalProvider = ({ children }) => {
             GetArticleById,
             CountArticles,
             DeleteAllArticles,
-            DeleteArticleById
+            DeleteArticleById,
+            incViews
         }}
     >
         {children}

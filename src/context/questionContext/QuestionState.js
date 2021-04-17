@@ -38,6 +38,9 @@ export const QuestionGlobalProvider = ({ children }) => {
         })
     }
 
+    const incViews = (id) => {
+        axios.get(`/api/question/incViews/${id}`)
+    }
     const GetQuestionById = (questionId) => {
         axios.get(`/api/question/findById/${questionId}`).then((res) => {
             dispatch({
@@ -103,7 +106,8 @@ export const QuestionGlobalProvider = ({ children }) => {
             GetQuestionById,
             CountQuestions,
             DeleteAllQuestions,
-            DeleteQuestionById
+            DeleteQuestionById,
+            incViews
         }}
     >
         {children}

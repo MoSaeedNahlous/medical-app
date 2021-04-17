@@ -4,9 +4,12 @@ import { QuestionGlobalContext } from '../../../context/questionContext/Question
 import Question from '../../layout/questions/Question'
 import Footer from '../../Footer'
 import AddQuestion from './AddQuestion'
+import { UserGlobalContext } from '../../../context/userContext/UserState'
 const QuestionsPage = () => {
 
     const context = useContext(QuestionGlobalContext)
+    const context2 = useContext(UserGlobalContext)
+    const {isAuth} = context2
     const { questions,GetAllQuestions } = context
     
     useEffect(() => {
@@ -22,7 +25,7 @@ const QuestionsPage = () => {
             <br />
             {/* <AddArticle /> */}
             <br />
-            <AddQuestion/>
+            {(!isAuth)?(null):(<AddQuestion/>)}
             <br/>
             <h2>Questions</h2>
         <div className="questions-grid-container">

@@ -5,39 +5,67 @@ import Header from '../../Header'
 import {QuestionGlobalContext } from '../../../context/questionContext/QuestionState'
 import { ReplyGlobalContext } from '../../../context/replyContext/ReplyState'
 import Reply from '../replies/Reply'
+import { UserGlobalContext } from '../../../context/userContext/UserState'
 
 const QuestionPage = ({ match }) => {
     const context = useContext(QuestionGlobalContext)
-    // const context2 = useContext(ReplyGlobalContext)
+    const context2 = useContext(ReplyGlobalContext)
+    const context3 = useContext(UserGlobalContext)
 
-    const { GetQuestionById, question } = context
-    // const {AddReply,GetRepliesForQuestion,replies} = context2
+    const { GetQuestionById, question,incViews } = context
+    const { AddReply, GetRepliesForQuestion, replies } = context2
+
     
     
     useEffect(() => {
         GetQuestionById(match.params.id)
-        // GetRepliesForQuestion(match.params.id)    
+        incViews(match.params.id)
+        GetRepliesForQuestion(match.params.id)
+        context3.LoadUser()
     }, [])
 
-    // const [ReplyState, setReplyState] = useState({text:'',date:null,questionId:'',authorId:''})
+    useEffect(() => {
+        if (context3.user !== null) {
+            var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+            today = mm + '/' + dd + '/' + yyyy;
+            setReplyState({
+            ...ReplyState,
+            author: context3.user.id,
+            date: today,
+            question:match.params.id
+         })
+            
+        }
+    }, [context3.user])
 
-    const onChangeHandler = (e) => {
-        // setReplyState({...ReplyState,[e.target.name]:e.target.value})
+    const [ReplyState, setReplyState] = useState({
+        text: '',
+        date: '',
+        question: '',
+        author: "",
+    })
+
+    const onChangeText = (e) => {
+        setReplyState({...ReplyState,text:e.target.value})
     }
+    
 
      const onSubmitHandler = (e) => {
-    //     e.preventDefault();
-    //     setReplyState({
-    //         ...ReplyState, date: Date.now()
-    //         // ,author:''
-    //     })
-    //     AddReply(ReplyState)
-    //     document.getElementById('reply-form').reset()
+        e.preventDefault(); 
+        AddReply(ReplyState)
+        console.log(ReplyState);
+        document.getElementById('reply-form').reset()
+        alert("Your replied Successfully!!")
      }
 
     while (question === null) {
         return(<h1>Loading</h1>)
     }
+   
+  
     
     
     return (
@@ -45,34 +73,58 @@ const QuestionPage = ({ match }) => {
             <Header />
             <br/>
         <div>
-                <h2>{question.data.subject}</h2>
+                <h2>{question.subject}</h2>
                 <br/>
-            <p style={{color:'grey'}}>{question.data.date} , <i class="fa fa-eye" aria-hidden="true">{question.data.views}</i> </p>
+            <p style={{color:'grey'}}>{question.date} , <i className="fa fa-eye" aria-hidden="true">{question.views}</i> </p>
             {/* <div className="article-img">
                 <img src={img} alt="article image" width="100%" height="20%"/>
             </div> */}
             <br />
-            <div>
-                {question.data.text}
+            <div className="question-text-block">
+                {question.text}
             </div>
             <br />
             </div>
+            <br/>
+            <h2>Replies</h2>
+           {context3.user === null || !context3.user.isDoctor?(null):( 
             <div>
                 <form id='reply-form' onSubmit={onSubmitHandler}>
                     <br/>
                     <textarea
-                        name="text"
-                        cols="30"
-                        rows="10"
+                        placeholder=" your Reply ...."
+                        cols="50"
+                        rows="3"
                         required
-                        onChange={onChangeHandler}>
+                        onChange={onChangeText}>
                     </textarea>
-                    <button>Reply</button>
+                    <br />
+                    <div>
+                        <button>Reply</button>
+                    </div>
                 </form>    
             </div>
-            {/* {replies.map(reply => {
-                return <Reply />
-            })} */}
+            )}
+            <br/>
+            <div className="replies-block">
+                
+                <br />
+                {replies === null ? (
+                    <h2> "No replies :-( "</h2>
+                ): (
+                    <div className="replies-block">
+                    {replies.map((reply) => {
+                        return(<Reply key={reply.id}
+                            text={reply.text}
+                            date={reply.date}
+                            authorId={reply.author}
+                        />)
+                        
+                    })}
+            </div>   
+                )}
+                
+            </div>
             <Footer/>
         </Fragment>
     )

@@ -1,6 +1,7 @@
 import './App.css';
 import {
   BrowserRouter as Router,
+  Redirect,
   Route,
   Switch
 } from 'react-router-dom';
@@ -17,6 +18,9 @@ import { ReplyGlobalProvider } from './context/replyContext/ReplyState';
 import DocSignUpPage from './components/SignIn-Up/DocSignUpPage';
 import ArticlesPage from './components/layout/articles/ArticlesPage';
 import QuestionsPage from './components/layout/questions/QuestionsPage';
+import PrivateUserRoute from './Routes/PrivateUserRoute';
+import Profile from './components/main-sections/Profile';
+import NotFound from './components/main-sections/NotFound';
 
 const App =()=> {
 
@@ -35,8 +39,13 @@ const App =()=> {
           <Route exact path='/articles' component={ArticlesPage} />      
           <Route exact path="/article/:id" component={ArticlePage} />
           <Route exact path="/questions" component={QuestionsPage} /> 
-          <Route exact path="/question/:id" component={QuestionPage} />         
+          <Route exact path="/question/:id" component={QuestionPage} />
 
+          <PrivateUserRoute exact path="/profile" component={Profile} />
+                  
+
+          <Route path='/404' component={NotFound} />
+          <Redirect to='/404' />
           </Switch>
         </Router>
             </div>

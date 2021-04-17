@@ -7,7 +7,7 @@ export default (state, action) => {
         case 'ADD_ARTICLE':
             return {
                 ...state,
-                articles:[action.payload,...state.articles]
+                articles:[...state.articles,action.payload]
             }
         
         case 'GET_ALL_ARTICLES':

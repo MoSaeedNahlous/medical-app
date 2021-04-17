@@ -1,9 +1,16 @@
 import React from 'react'
 
-const Reply = () => {
+const Reply = ({text,date,author}) => {
     return (
-        <div>
-            this is a reply
+        <div className="reply-body">
+            <div>
+                <p>{text}</p>
+            </div>
+            <div>
+                <h6>{date}</h6>
+            </div>
+            
+            
         </div>
     )
 }

@@ -7,7 +7,7 @@ export default (state, action) => {
         case 'ADD_REPLY':
             return {
                 ...state,
-                replies:[action.payload,...state.replies]
+                replies:[...state.replies,action.payload]
             }
         
         case 'GET_ALL_REPLIES':
@@ -24,7 +24,7 @@ export default (state, action) => {
         case 'GET_REPLIES_FOR_QUESTION':
             return {
                 ...state,
-                replies:state.replies.filter((reply)=>reply.question===action.payload)
+                replies:action.payload.data.filter((reply)=>reply.question===action.payload.id)
             }
         case 'GET_REPLIES_COUNT':
             return {

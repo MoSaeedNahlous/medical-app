@@ -10,6 +10,7 @@ export default (state, action) => {
             }
         
         case 'LOAD_USER':
+            localStorage.setItem('xxx',action.payload.isDoctor)
             return {
                 ...state,
                 user: action.payload,

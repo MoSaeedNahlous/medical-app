@@ -13,11 +13,15 @@ export const ReplyGlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(ReplyReducer, intialState)
 
     const AddReply = (replyData) => {
-        axios.post('/api/reply/save', replyData).then((res) => {
+        axios.post('/api/reply/save', replyData, {
+            headers: {
+                "x-access-token":localStorage.getItem('jwtToken')
+            }
+        }).then((res) => {
             dispatch({
                 type: 'ADD_REPLY',
                 //check if payload is res or res.data
-                payload:res
+                payload:res.data
                 
             })
         }).catch((err) => {
@@ -50,9 +54,13 @@ export const ReplyGlobalProvider = ({ children }) => {
     }
 
     const GetRepliesForQuestion = (questionId) => {
-        dispatch({
-            type: "GET_REPLIES_FOR_QUESTION",
-            payload:questionId
+        axios.get('/api/reply/findAll').then((res) => {
+            dispatch({
+                type: "GET_REPLIES_FOR_QUESTION",
+                payload: { data:res.data,id:questionId }
+            })
+        }).catch((err) => {
+            throw err
         })
     }
         
