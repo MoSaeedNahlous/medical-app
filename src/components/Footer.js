@@ -5,34 +5,17 @@ const Footer = () => {
         <div className="full-footer">
         <div className="footer">
             <div className="footer-container">
-                <div className="footer-list">
-                    <ul>
-                        <li>Sections</li>
-                        <li>sec</li>
-                        <li>sec</li>
-                        <li>sec</li>
-                        <li>sec</li>
-                        <li>sec</li>
-                    </ul>
-                </div>
+                
                 <div className="footer-list">
                     <ul>
                         <li>Policy and Privacy</li>
-                        <li>rule</li>
-                        <li>rule</li>
-                        <li>rule</li>
-                        <li>rule</li>
-                        <li>rule</li>
+
                     </ul>
                 </div>
                 <div className="footer-list">
                     <ul>
                         <li>Learn More</li>
-                        <li>learn</li>
-                        <li>learn</li>
-                        <li>learn</li>
-                        <li>learn</li>
-                        <li>learn</li>
+                        
                     </ul>
                 </div>
                 <div className="footer-icon-list">
@@ -60,7 +43,7 @@ const Footer = () => {
             
             </div>
             <div className="footer-end">
-            <p>M.S.N®, 2020 All Righst Reserved </p>
+            <p> 2021 All Rights Reserved </p>
             
             </div>
         </div>

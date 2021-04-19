@@ -6,14 +6,17 @@ import {QuestionGlobalContext } from '../../../context/questionContext/QuestionS
 import { ReplyGlobalContext } from '../../../context/replyContext/ReplyState'
 import Reply from '../replies/Reply'
 import { UserGlobalContext } from '../../../context/userContext/UserState'
+import { useHistory } from 'react-router'
 
 const QuestionPage = ({ match }) => {
     const context = useContext(QuestionGlobalContext)
     const context2 = useContext(ReplyGlobalContext)
     const context3 = useContext(UserGlobalContext)
 
-    const { GetQuestionById, question,incViews } = context
+    const { GetQuestionById, question,incViews,DeleteQuestionById } = context
     const { AddReply, GetRepliesForQuestion, replies } = context2
+
+    const history = useHistory()
 
     
     
@@ -50,6 +53,11 @@ const QuestionPage = ({ match }) => {
 
     const onChangeText = (e) => {
         setReplyState({...ReplyState,text:e.target.value})
+    }
+    const onDelete = () => {
+        DeleteQuestionById(match.params.id)
+        alert("Deleted Successfully!")
+        history.push('/questions')
     }
     
 
@@ -125,6 +133,9 @@ const QuestionPage = ({ match }) => {
                 )}
                 
             </div>
+            {( context3.isAuth && context3.user.id === question.author) ?
+                (<button onClick={onDelete}>Delete</button>) :
+                (null)}
             <Footer/>
         </Fragment>
     )

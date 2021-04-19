@@ -69,7 +69,11 @@ export const ArticleGlobalProvider = ({ children }) => {
     }
 
     const DeleteArticleById = (articleId) => {
-        axios.delete(`/api/article/deleteById/${articleId}`).then((res) => {
+        axios.delete(`/api/article/deleteById/${articleId}`, {
+            headers: {
+            "x-access-token":localStorage.getItem('jwtToken')
+            }
+        }).then((res) => {
             dispatch({
                 type: 'DELETE_ARTICLE_BY_ID',
                 payload:res.data

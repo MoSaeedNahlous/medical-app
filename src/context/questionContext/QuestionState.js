@@ -66,7 +66,11 @@ export const QuestionGlobalProvider = ({ children }) => {
     }
 
     const DeleteQuestionById = (questionId) => {
-        axios.delete(`/api/question/deleteById/${questionId}`).then((res) => {
+        axios.delete(`/api/question/deleteById/${questionId}`,{
+            headers: {
+            "x-access-token":localStorage.getItem('jwtToken')
+            }
+        }).then((res) => {
             dispatch({
                 type: 'DELETE_QUESTION_BY_ID',
                 //check if payload is res or res.data
