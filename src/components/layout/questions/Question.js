@@ -23,7 +23,7 @@ const Question = ({ text, date, id, views, subject }) => {
             <div className="question-footer">
                 <h6>{date} 📅 </h6>
                 <p >{views} 👀 </p>
-                <button><Link to={`/question/${id}`}>see all details</Link></button>
+                <button className="read-more"><Link to={`/question/${id}`}>see all details</Link></button>
                 
             </div>
         </div>

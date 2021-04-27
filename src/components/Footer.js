@@ -21,17 +21,17 @@ const Footer = () => {
                 <div className="footer-icon-list">
                     <ul>
                         <li style={{fontWeight:'bolder'}}>Contact us</li>
-                        <li><i className="fa-2x fa fa-facebook-square" /> Facebook</li>
-                        <li><i className="fa-2x fa fa-telegram" /> Telegram</li>
-                        <li><i className="fa-2x fab fa-instagram-square" /> Instagram</li>
+                            <li><i className="fa-2x fa fa-facebook-square" style={{color:'blue'}}/> Facebook</li>
+                        <li><i className="fa-2x fa fa-telegram"style={{color:'grey'}} /> Telegram</li>
+                        <li><i className="fa-2x fab fa-instagram-square"style={{color:'rose'}} /> Instagram</li>
                     </ul>
                 </div>
                 <div className="footer-icon-list">
                     <ul>
                         <li>&nbsp;</li>
-                        <li><i className='fa-2x fab fa-whatsapp-square'/> Whatsapp</li>
+                        <li><i className='fa-2x fab fa-whatsapp-square'style={{color:'green'}}/> Whatsapp</li>
                         <li><i className="fa-2x fa fa-github-square" /> Github</li>
-                        <li><i className="fa-2x fa fa-linkedin-square" /> LinkedIn</li>
+                        <li><i className="fa-2x fa fa-linkedin-square" style={{color:'blue'}} /> LinkedIn</li>
 
                     </ul>
                 </div>

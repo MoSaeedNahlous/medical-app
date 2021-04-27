@@ -42,7 +42,7 @@ const QuestionsGrid = () => {
             
             </div>
 
-            <button onClick={goToQuestions}>More</button>
+            <button onClick={goToQuestions} style={{padding:'2%',fontSize:'20px',borderRadius:'15px',cursor:'pointer'}} >More</button>
         </div>
     )
 }

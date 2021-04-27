@@ -41,9 +41,10 @@ const ArticlesGrid = () => {
             
             </div>
 
-            <div>
-                <button onClick={goToArticles}>More</button>
+            <div style={{width:'100%'}}>
+                <button onClick={goToArticles}  style={{padding:'2%',fontSize:'20px',borderRadius:'15px',cursor:'pointer'}} >More</button>
             </div>
+            <br/>
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import React, { Fragment, useContext, useEffect } from 'react'
 import { ArticleGlobalContext } from '../../../context/articleContext/ArticleState'
+import { UserGlobalContext } from '../../../context/userContext/UserState'
 import Footer from '../../Footer'
 import Header from '../../Header'
 import AddArticle from './AddArticle'
@@ -8,6 +9,7 @@ import ArticlesGrid from './ArticlesGrid'
 
 const ArticlesPage = () => {
     const context = useContext(ArticleGlobalContext)
+    const context2 = useContext(UserGlobalContext)
     const { articles,GetAllArticles } = context
 
     useEffect(() => {
@@ -24,7 +26,8 @@ const ArticlesPage = () => {
         <Fragment>
             <Header />
             <br />
-            <AddArticle />
+            {context2.isAuth && context2.user.isDoctor?(<AddArticle />):(null)}
+            
             <br/>
             <h2>Articles</h2>
         <div className="articles-grid-container">
