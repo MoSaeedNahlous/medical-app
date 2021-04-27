@@ -5,7 +5,7 @@ import Footer from '../../Footer'
 import Header from '../../Header'
 import AddArticle from './AddArticle'
 import Article from './Article'
-import ArticlesGrid from './ArticlesGrid'
+
 
 const ArticlesPage = () => {
     const context = useContext(ArticleGlobalContext)

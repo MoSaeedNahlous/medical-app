@@ -22,6 +22,8 @@ import PrivateUserRoute from './Routes/PrivateUserRoute';
 import Profile from './components/main-sections/Profile';
 import NotFound from './components/main-sections/NotFound';
 
+
+// التطبيق ك كل والذي نضع ضكمه مخازن الحالات وكل الطرق اي ال راوتنغ والصفحات
 const App =()=> {
 
   return (
