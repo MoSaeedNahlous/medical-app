@@ -80,6 +80,7 @@ const QuestionPage = ({ match }) => {
         <Fragment>
             <Header />
             <br/>
+            <br/>
         <div>
                 <h2>{question.subject}</h2>
                 <br/>
@@ -138,6 +139,8 @@ const QuestionPage = ({ match }) => {
                 (null)}
 
                 <br/>
+            <br/>
+            <br/>
             <br/>
             <Footer/>
         </Fragment>
