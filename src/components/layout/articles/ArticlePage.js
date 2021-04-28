@@ -50,7 +50,8 @@ const ArticlePage = ({ match }) => {
             {( isAuth && user.id === article.author) ?
                 (<button onClick={onDelete}>Delete</button>) :
                 (null)}
-            
+            <br/>
+            <br/>
             <Footer/>
         </Fragment>
     )

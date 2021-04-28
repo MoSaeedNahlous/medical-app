@@ -136,6 +136,9 @@ const QuestionPage = ({ match }) => {
             {( context3.isAuth && context3.user.id === question.author) ?
                 (<button onClick={onDelete}>Delete</button>) :
                 (null)}
+
+                <br/>
+            <br/>
             <Footer/>
         </Fragment>
     )
