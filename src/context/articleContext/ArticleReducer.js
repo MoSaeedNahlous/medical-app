@@ -1,6 +1,8 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-expressions */
 // eslint-disable-next-line import/no-anonymous-default-export
+
+// عبارة عن جملة سويتش لمناقشة كل حالة وفي كل حالة نقوم بتعديلات على السياق بحسب الحالة
 export default (state, action) => {
     switch (action.type) {
 

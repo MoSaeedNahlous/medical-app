@@ -1,7 +1,12 @@
 import React from 'react'
 
+// جسم العنصر
 const Footer = () => {
+
     return (
+        // الكود الأسفل هو كود
+        // jsx
+        // وهو مزيج بين الجافاسكريبت و اتش تي ام ال
         <div className="full-footer">
         <div className="footer">
             <div className="footer-container">
@@ -49,5 +54,5 @@ const Footer = () => {
         </div>
     )
 }
-
+// تصدير العنصر ليتم استخدامه في أي مكان ضمن المشروع
 export default Footer

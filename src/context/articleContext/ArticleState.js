@@ -3,15 +3,16 @@ import ArticleReducer from './ArticleReducer'
 import axios from 'axios'
 
 
-
+//متحولات نريد اتاحتها من قبل السياق الخاص بالمقالات
 const intialState = { article: null,articles:null,articleCounter:null }
-
+// تصريح السياق
 export const ArticleGlobalContext = createContext(intialState);
-
+// تصريح مزود السياق و التي وظيفته جعل المتحولات في الأعلى متاحة لكل المشروع
 export const ArticleGlobalProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(ArticleReducer, intialState)
 
+// الميثودات التي ستتاح أيضا لكل المشروع
     const AddArticle = (articleData) => {
         axios.post('/api/article/save', articleData, {
             headers: {
@@ -19,6 +20,8 @@ export const ArticleGlobalProvider = ({ children }) => {
             }
         }
         ).then((res) => {
+            // طريقة التفاعل بين القيمة المرجعة للميثود وبين السياق
+            // بمساعدة ملف Reducer
             dispatch({
                 type: 'ADD_ARTICLE',
                 payload:res.data
@@ -104,8 +107,6 @@ export const ArticleGlobalProvider = ({ children }) => {
             article: state.article,
             articles: state.articles,
             articlesCounter: state.articlesCounter,
-            
-
             AddArticle,
             GetAllArticles,
             GetArticleById,
