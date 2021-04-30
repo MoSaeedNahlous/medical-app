@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/medical-app/static/css/main.be110797.chunk.css",
+    "main.js": "/medical-app/static/js/main.e638e071.chunk.js",
+    "main.js.map": "/medical-app/static/js/main.e638e071.chunk.js.map",
+    "runtime-main.js": "/medical-app/static/js/runtime-main.94c8f88b.js",
+    "runtime-main.js.map": "/medical-app/static/js/runtime-main.94c8f88b.js.map",
+    "static/js/2.adce7587.chunk.js": "/medical-app/static/js/2.adce7587.chunk.js",
+    "static/js/2.adce7587.chunk.js.map": "/medical-app/static/js/2.adce7587.chunk.js.map",
+    "index.html": "/medical-app/index.html",
+    "static/css/main.be110797.chunk.css.map": "/medical-app/static/css/main.be110797.chunk.css.map",
+    "static/js/2.adce7587.chunk.js.LICENSE.txt": "/medical-app/static/js/2.adce7587.chunk.js.LICENSE.txt",
+    "static/media/1.f79e7833.jpg": "/medical-app/static/media/1.f79e7833.jpg",
+    "static/media/404.6dec3cfb.jpg": "/medical-app/static/media/404.6dec3cfb.jpg",
+    "static/media/article-cover.7185d43a.jpg": "/medical-app/static/media/article-cover.7185d43a.jpg",
+    "static/media/index.css": "/medical-app/static/media/bg.84c6fc8d.svg",
+    "static/media/default-user-image.cddfc9e3.jpg": "/medical-app/static/media/default-user-image.cddfc9e3.jpg",
+    "static/media/default.0b724fe0.png": "/medical-app/static/media/default.0b724fe0.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.94c8f88b.js",
+    "static/js/2.adce7587.chunk.js",
+    "static/css/main.be110797.chunk.css",
+    "static/js/main.e638e071.chunk.js"
+  ]
+}
