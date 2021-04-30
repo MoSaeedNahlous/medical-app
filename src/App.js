@@ -19,6 +19,7 @@ import DocSignUpPage from './components/SignIn-Up/DocSignUpPage';
 import ArticlesPage from './components/layout/articles/ArticlesPage';
 import QuestionsPage from './components/layout/questions/QuestionsPage';
 import PrivateUserRoute from './Routes/PrivateUserRoute';
+// import PrivateAdminRoute from './Routes/PrivateAdminRoute';
 import Profile from './components/main-sections/Profile';
 import NotFound from './components/main-sections/NotFound';
 import Admin from './components/main-sections/Admin';
@@ -45,7 +46,7 @@ const App =()=> {
           <Route exact path="/question/:id" component={QuestionPage} />
 
           <PrivateUserRoute exact path="/profile" component={Profile} />
-          <Route exact path="/admin" component={Admin} />
+          <PrivateUserRoute exact path="/admin" component={Admin} />
                   
 
           <Route path='/404' component={NotFound} />
