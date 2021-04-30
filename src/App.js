@@ -36,17 +36,17 @@ const App =()=> {
       <div className="App">
         <HashRouter basename="/">
         
-          <Route exact path='/medical-app' component={HomePage} />
-          <Route exact path='/medical-app/signin' component={SignInPage} />
-          <Route exact path='/medical-app/signup' component={SignUpPage} />
-          <Route exact path='/medical-app/doc-signup' component={DocSignUpPage} />
-          <Route exact path='/medical-app/articles' component={ArticlesPage} />      
-          <Route exact path="/medical-app/article/:id" component={ArticlePage} />
-          <Route exact path="/medical-app/questions" component={QuestionsPage} /> 
-          <Route exact path="/medical-app/question/:id" component={QuestionPage} />
+          <Route exact path='' component={HomePage} />
+          <Route exact path='/signin' component={SignInPage} />
+          <Route exact path='/signup' component={SignUpPage} />
+          <Route exact path='/doc-signup' component={DocSignUpPage} />
+          <Route exact path='/articles' component={ArticlesPage} />      
+          <Route exact path="/article/:id" component={ArticlePage} />
+          <Route exact path="/questions" component={QuestionsPage} /> 
+          <Route exact path="/question/:id" component={QuestionPage} />
 
-          <PrivateUserRoute exact path="/medical-app/profile" component={Profile} />
-          <PrivateUserRoute exact path="/medical-app/admin" component={Admin} />
+          <PrivateUserRoute exact path="/profile" component={Profile} />
+          <PrivateUserRoute exact path="/admin" component={Admin} />
                   
 
           {/* <Route path='/medical-app/404' component={NotFound} />
