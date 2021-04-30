@@ -14,7 +14,7 @@ export const ArticleGlobalProvider = ({ children }) => {
 
 // الميثودات التي ستتاح أيضا لكل المشروع
     const AddArticle = (articleData) => {
-        axios.post('/api/article/save', articleData, {
+        axios.post('https://medicasvu.herokuapp.com/api/article/save', articleData, {
             headers: {
             "x-access-token":localStorage.getItem('jwtToken')
             }
@@ -36,7 +36,7 @@ export const ArticleGlobalProvider = ({ children }) => {
     }
 
     const GetAllArticles = () => {
-        axios.get('/api/article/findAll').then((res) => {
+        axios.get('https://medicasvu.herokuapp.com/api/article/findAll').then((res) => {
             dispatch({
                 type: 'GET_ALL_ARTICLES',
                 //check if payload is res or res.data
