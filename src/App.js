@@ -36,7 +36,7 @@ const App =()=> {
       <div className="App">
         <HashRouter basename="/">
         
-          <Route exact path='' component={HomePage} />
+          <Route exact path='/' component={HomePage} />
           <Route exact path='/signin' component={SignInPage} />
           <Route exact path='/signup' component={SignUpPage} />
           <Route exact path='/doc-signup' component={DocSignUpPage} />
