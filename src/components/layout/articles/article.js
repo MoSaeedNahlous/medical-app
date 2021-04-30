@@ -1,7 +1,5 @@
-import React, { Fragment, useEffect } from 'react'
-import image from '../../../res/images/default-user-image.jpg'
-import cover from '../../../res/images/article-cover.jpg'
-import { Link, useHistory } from 'react-router-dom'
+import React, { Fragment} from 'react'
+import { Link } from 'react-router-dom'
 
 const Article = ({ subject, text, date, views, id }) => {
         text = text.slice(0,150)
