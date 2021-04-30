@@ -25,7 +25,7 @@ import NotFound from './components/main-sections/NotFound';
 import Admin from './components/main-sections/Admin';
 
 
-// التطبيق ك كل والذي نضع ضكمه مخازن الحالات وكل الطرق اي ال راوتنغ والصفحات
+// التطبيق ك كل والذي نضع ضمنه مخازن الحالات وكل الطرق اي ال راوتنغ والصفحات
 const App =()=> {
 
   return (
@@ -51,6 +51,7 @@ const App =()=> {
 
           {/* <Route path='/medical-app/404' component={NotFound} />
           <Redirect to='/medical-app/404' /> */}
+                  
           </Switch>
         </HashRouter>
             </div>
