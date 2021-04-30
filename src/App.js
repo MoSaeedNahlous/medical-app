@@ -36,7 +36,7 @@ const App =()=> {
       <div className="App">
         <Router>
         <Switch>
-          <Route exact path='/medical-app/' component={HomePage} />
+          <Route exact path='/medical-app' component={HomePage} />
           <Route exact path='/medical-app/signin' component={SignInPage} />
           <Route exact path='/medical-app/signup' component={SignUpPage} />
           <Route exact path='/medical-app/doc-signup' component={DocSignUpPage} />
@@ -49,8 +49,8 @@ const App =()=> {
           <PrivateUserRoute exact path="/medical-app/admin" component={Admin} />
                   
 
-          <Route path='/medical-app/404' component={NotFound} />
-          <Redirect to='/medical-app/404' />
+          {/* <Route path='/medical-app/404' component={NotFound} />
+          <Redirect to='/medical-app/404' /> */}
           </Switch>
         </Router>
             </div>
