@@ -1,6 +1,6 @@
 import './App.css';
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Redirect,
   Route,
   Switch
@@ -34,7 +34,7 @@ const App =()=> {
         <QuestionGlobalProvider>
           <ReplyGlobalProvider>
       <div className="App">
-        <Router>
+        <HashRouter basename="/">
         <Switch>
           <Route exact path='/medical-app' component={HomePage} />
           <Route exact path='/medical-app/signin' component={SignInPage} />
@@ -52,7 +52,7 @@ const App =()=> {
           {/* <Route path='/medical-app/404' component={NotFound} />
           <Redirect to='/medical-app/404' /> */}
           </Switch>
-        </Router>
+        </HashRouter>
             </div>
           </ReplyGlobalProvider>
         </QuestionGlobalProvider>
