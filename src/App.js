@@ -35,7 +35,7 @@ const App =()=> {
           <ReplyGlobalProvider>
       <div className="App">
         <HashRouter basename="/">
-        <Switch>
+        
           <Route exact path='/medical-app' component={HomePage} />
           <Route exact path='/medical-app/signin' component={SignInPage} />
           <Route exact path='/medical-app/signup' component={SignUpPage} />
@@ -52,7 +52,7 @@ const App =()=> {
           {/* <Route path='/medical-app/404' component={NotFound} />
           <Redirect to='/medical-app/404' /> */}
                   
-          </Switch>
+          
         </HashRouter>
             </div>
           </ReplyGlobalProvider>
