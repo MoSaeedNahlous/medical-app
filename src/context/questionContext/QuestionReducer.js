@@ -38,8 +38,19 @@ export default (state, action) => {
                 ...state,
                 questions:[]
             }
-    
-        default:
-            break;
-    }
+
+        case 'SET_CURRENT_QUESTION':
+            return{
+                    ...state,
+                    currentQuestion:action.payload
+                }
+        case 'CLEAR_CURRENT_QUESTION':
+            return{
+                    ...state,
+                    currentQuestion:null
+                }
+        
+            default:
+                return state
+        }
 }

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 
-const intialState = { question: null,questions:null,questionsCounter:null }
+const intialState = { question: null,questions:null,questionsCounter:null ,currentQuestion:null}
 
 export const QuestionGlobalContext = createContext(intialState);
 
@@ -94,6 +94,32 @@ export const QuestionGlobalProvider = ({ children }) => {
         })
     }
 
+    const SetCurrentQuestion =(question)=>{
+        dispatch({
+            type: 'SET_CURRENT_QUESTION',
+            payload:question
+        })
+    }
+
+    const ClearCurrentQuestion =()=>{
+        dispatch({
+            type: 'CLEAR_CURRENT_QUESTION',
+            
+        })
+    }
+
+    const UpdateQuestionById =(questionId,question)=>{
+        axios.put(`/api/question/update/${questionId}`,question).then(res=>{
+            dispatch({
+                type: 'UPDATE_QUESTION_BY_ID',
+                
+            })
+        }).catch((err) => {
+            throw err
+        })
+
+    }
+
     
 
 
@@ -103,7 +129,7 @@ export const QuestionGlobalProvider = ({ children }) => {
             question: state.question,
             questions: state.questions,
             questionsCounter: state.questionsCounter,
-            
+            currentQuestion:state.currentQuestion,
 
             AddQuestion,
             GetAllQuestions,
@@ -111,7 +137,10 @@ export const QuestionGlobalProvider = ({ children }) => {
             CountQuestions,
             DeleteAllQuestions,
             DeleteQuestionById,
-            incViews
+            incViews,
+            ClearCurrentQuestion,
+            SetCurrentQuestion,
+            UpdateQuestionById
         }}
     >
         {children}

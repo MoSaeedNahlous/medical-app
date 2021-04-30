@@ -63,6 +63,16 @@ export default (state, action) => {
                 ...state,
                 users:[]
             }
+        case 'SET_CURRENT_USER':
+                return{
+                    ...state,
+                    currentUser:action.payload
+                }
+        case 'CLEAR_CURRENT_USER':
+                return{
+                    ...state,
+                    currentUser:null
+                }
     
         default:
             break;

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 
-const intialState = { user: null,users:null,usersCounter:null,isAuth:false }
+const intialState = { user: null,users:null,usersCounter:null,isAuth:false,currentUser:null }
 
 export const UserGlobalContext = createContext(intialState);
 
@@ -66,11 +66,15 @@ export const UserGlobalProvider = ({ children }) => {
     
 
     const GetAllUsers = () => {
-        axios.get('/api/user/findAll').then((res) => {
+        axios.get('/api/user/findAll', {
+            headers: {
+                'x-access-token': localStorage.getItem('jwtToken')
+            }
+        }).then((res) => {
             dispatch({
                 type: 'GET_ALL_USERS',
                 //check if payload is res or res.data
-                payload:res
+                payload:res.data
                 
             })
         }).catch((err) => {
@@ -103,11 +107,15 @@ export const UserGlobalProvider = ({ children }) => {
     }
 
     const DeleteUserById = (userId) => {
-        axios.delete(`/api/user/deleteById/${userId}`).then((res) => {
+        axios.delete(`/api/user/deleteById/${userId}`,{
+            headers: {
+                'x-access-token': localStorage.getItem('jwtToken')
+            }
+        }).then((res) => {
             dispatch({
                 type: 'DELETE_USER_BY_ID',
                 //check if payload is res or res.data
-                payload:res
+                payload:res.data
             })
         }).catch((err) => {
             throw err
@@ -128,6 +136,29 @@ export const UserGlobalProvider = ({ children }) => {
     }
 
     
+    const SetCurrentUser =(User)=>{
+        dispatch({
+            type: 'SET_CURRENT_USER',
+            payload:User
+        })
+    }
+
+    const ClearCurrentUser =()=>{
+        dispatch({
+            type: 'CLEAR_CURRENT_USER',
+            
+        })
+    }
+
+    const UpdateUserById = (userId,user) => {
+        axios.put(`/api/user/update/${userId}`, user).then(res => {
+            
+        }).catch(err => {
+            
+        })
+    }
+
+    
 
 
 
@@ -137,6 +168,7 @@ export const UserGlobalProvider = ({ children }) => {
             users: state.users,
             usersCounter: state.usersCounter,
             isAuth:state.isAuth,
+            currentUser:state.currentUser,
             
 
             AddUser,
@@ -147,7 +179,10 @@ export const UserGlobalProvider = ({ children }) => {
             GetUserById,
             CountUsers,
             DeleteAllUsers,
-            DeleteUserById
+            DeleteUserById,
+            SetCurrentUser,
+            ClearCurrentUser,
+            UpdateUserById
         }}
     >
         {children}

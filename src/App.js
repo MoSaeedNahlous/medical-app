@@ -21,6 +21,7 @@ import QuestionsPage from './components/layout/questions/QuestionsPage';
 import PrivateUserRoute from './Routes/PrivateUserRoute';
 import Profile from './components/main-sections/Profile';
 import NotFound from './components/main-sections/NotFound';
+import Admin from './components/main-sections/Admin';
 
 
 // التطبيق ك كل والذي نضع ضكمه مخازن الحالات وكل الطرق اي ال راوتنغ والصفحات
@@ -44,6 +45,7 @@ const App =()=> {
           <Route exact path="/question/:id" component={QuestionPage} />
 
           <PrivateUserRoute exact path="/profile" component={Profile} />
+          <Route exact path="/admin" component={Admin} />
                   
 
           <Route path='/404' component={NotFound} />

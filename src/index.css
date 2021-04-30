@@ -568,3 +568,25 @@ right:0.5%;
 .is-hidden{
     display: none;
 }
+
+.panels-container{
+  display: flex;
+  flex-direction: column;
+}
+.panel{
+  margin:1% auto;
+  padding: 2%;
+  background-color: white;
+
+}
+
+tr{
+  background-color: #dfdfdf;
+}
+
+
+.panel-sec{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}

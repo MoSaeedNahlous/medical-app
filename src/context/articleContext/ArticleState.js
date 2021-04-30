@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 //متحولات نريد اتاحتها من قبل السياق الخاص بالمقالات
-const intialState = { article: null,articles:null,articleCounter:null }
+const intialState = { article: null,articles:null,articleCounter:null,currentArticle:null }
 // تصريح السياق
 export const ArticleGlobalContext = createContext(intialState);
 // تصريح مزود السياق و التي وظيفته جعل المتحولات في الأعلى متاحة لكل المشروع
@@ -98,6 +98,32 @@ export const ArticleGlobalProvider = ({ children }) => {
         })
     }
 
+    const UpdateArticleById =(articleId,article)=>{
+        axios.put(`/api/article/update/${articleId}`,article).then(res=>{
+            dispatch({
+                type: 'UPDATE_ARTICLE_BY_ID',
+                
+            })
+        }).catch((err) => {
+            throw err
+        })
+
+    }
+
+    const SetCurrentArticle =(article)=>{
+        dispatch({
+            type: 'SET_CURRENT_ARTICLE',
+            payload:article
+        })
+    }
+
+    const ClearCurrentArticle =()=>{
+        dispatch({
+            type: 'CLEAR_CURRENT_ARTICLE',
+            
+        })
+    }
+
     
 
 
@@ -107,13 +133,17 @@ export const ArticleGlobalProvider = ({ children }) => {
             article: state.article,
             articles: state.articles,
             articlesCounter: state.articlesCounter,
+            currentArticle:state.currentArticle,
             AddArticle,
             GetAllArticles,
             GetArticleById,
             CountArticles,
             DeleteAllArticles,
             DeleteArticleById,
-            incViews
+            incViews,
+            SetCurrentArticle,
+            ClearCurrentArticle,
+            UpdateArticleById
         }}
     >
         {children}

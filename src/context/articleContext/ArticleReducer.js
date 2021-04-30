@@ -40,8 +40,22 @@ export default (state, action) => {
                 ...state,
                 articles:[]
             }
+        case 'SET_CURRENT_ARTICLE':
+            return{
+                ...state,
+                currentArticle:action.payload
+            }
+        case 'CLEAR_CURRENT_ARTICLE':
+            return{
+                ...state,
+                currentArticle:null
+            }
+        case 'UPDATE_ARTICLE_BY_ID':
+            return{
+                ...state
+            }
     
         default:
-            break;
+            return state
     }
 }
