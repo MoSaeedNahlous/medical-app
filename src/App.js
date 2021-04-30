@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import './App.css';
 import {
-  HashRouter,
+  BrowserRouter as Router,
   Redirect,
   Route,
   Switch
@@ -26,7 +25,7 @@ import NotFound from './components/main-sections/NotFound';
 import Admin from './components/main-sections/Admin';
 
 
-// التطبيق ك كل والذي نضع ضمنه مخازن الحالات وكل الطرق اي ال راوتنغ والصفحات
+// التطبيق ك كل والذي نضع ضكمه مخازن الحالات وكل الطرق اي ال راوتنغ والصفحات
 const App =()=> {
 
   return (
@@ -35,8 +34,8 @@ const App =()=> {
         <QuestionGlobalProvider>
           <ReplyGlobalProvider>
       <div className="App">
-        <HashRouter basename="/">
-        
+        <Router>
+        <Switch>
           <Route exact path='/' component={HomePage} />
           <Route exact path='/signin' component={SignInPage} />
           <Route exact path='/signup' component={SignUpPage} />
@@ -50,11 +49,10 @@ const App =()=> {
           <PrivateUserRoute exact path="/admin" component={Admin} />
                   
 
-          {/* <Route path='/medical-app/404' component={NotFound} />
-          <Redirect to='/medical-app/404' /> */}
-                  
-          
-        </HashRouter>
+          <Route path='/404' component={NotFound} />
+          <Redirect to='/404' />
+          </Switch>
+        </Router>
             </div>
           </ReplyGlobalProvider>
         </QuestionGlobalProvider>
