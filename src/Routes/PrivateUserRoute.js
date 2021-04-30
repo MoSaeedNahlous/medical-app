@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 // مسار الخاص للمستخدم حيث نتيح في هذا المسار الوصول الى أماكن لايمكن للضيف الوصول اليها
