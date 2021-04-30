@@ -9,7 +9,7 @@ const PrivateUserRoute = ({ component: Component, ...rest }) => {
       {...rest}
       render={(props) =>
         !localStorage.getItem('jwtToken') ? (
-          <Redirect to='/404' />
+          <Redirect to='/medical-app/404' />
         ) : (
           <Component {...props} />
         )
