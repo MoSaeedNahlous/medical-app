@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/medical-app/static/css/main.be110797.chunk.css",
-    "main.js": "/medical-app/static/js/main.6e10edda.chunk.js",
-    "main.js.map": "/medical-app/static/js/main.6e10edda.chunk.js.map",
+    "main.js": "/medical-app/static/js/main.df408022.chunk.js",
+    "main.js.map": "/medical-app/static/js/main.df408022.chunk.js.map",
     "runtime-main.js": "/medical-app/static/js/runtime-main.94c8f88b.js",
     "runtime-main.js.map": "/medical-app/static/js/runtime-main.94c8f88b.js.map",
     "static/js/2.e05d0045.chunk.js": "/medical-app/static/js/2.e05d0045.chunk.js",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.94c8f88b.js",
     "static/js/2.e05d0045.chunk.js",
     "static/css/main.be110797.chunk.css",
-    "static/js/main.6e10edda.chunk.js"
+    "static/js/main.df408022.chunk.js"
   ]
 }
