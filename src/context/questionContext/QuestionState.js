@@ -42,7 +42,7 @@ export const QuestionGlobalProvider = ({ children }) => {
         axios.get(`https://medicasvu.herokuapp.com/api/question/incViews/${id}`)
     }
     const GetQuestionById = (questionId) => {
-        axios.get(`/api/question/findById/${questionId}`).then((res) => {
+        axios.get(`https://medicasvu.herokuapp.com/api/question/findById/${questionId}`).then((res) => {
             dispatch({
                 type: 'GET_QUESTION_BY_ID',
                 //check if payload is res or res.data
