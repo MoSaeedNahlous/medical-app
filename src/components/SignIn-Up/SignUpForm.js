@@ -7,7 +7,7 @@ import { Link, useHistory } from 'react-router-dom'
 const SignUpForm = () => {
 
     
-  const verify = (response) => {
+var verify = function (response) {
     response ? (setState({...state,authed:true})) : (setState({...state,authed:false}));
   };
     const context = useContext(UserGlobalContext)
