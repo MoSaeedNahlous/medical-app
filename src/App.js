@@ -5,6 +5,9 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 import { UserGlobalProvider } from './context/userContext/UserState';
 import SignInPage from './components/SignIn-Up/SignInPage';
@@ -27,7 +30,7 @@ import Admin from './components/main-sections/Admin';
 
 // التطبيق ك كل والذي نضع ضكمه مخازن الحالات وكل الطرق اي ال راوتنغ والصفحات
 const App =()=> {
-
+AOS.init();
   return (
     <UserGlobalProvider>
       <ArticleGlobalProvider>
