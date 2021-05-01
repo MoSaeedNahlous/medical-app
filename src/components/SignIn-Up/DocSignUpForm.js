@@ -135,7 +135,7 @@ var verify = function (response) {
                 
                 <div>
                     <Recaptcha
-                        sitekey='6Ldfe8EaAAAAANlyY6W6_p0wbPf8yxUQXpCJvYwf'
+                        sitekey='6LfVjMEaAAAAAMe7WObYUmwFXJZFQJzzfYckhO8_'
                         render='explicit'
                         verifyCallback={verify}
                         theme="light"
