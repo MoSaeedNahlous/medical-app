@@ -6,9 +6,8 @@ import { Link, useHistory } from 'react-router-dom'
 
 const SignUpForm = () => {
 
-    
 var verify = function (response) {
-    response ? (setState({...state,authed:true})) : (setState({...state,authed:false}));
+    response ? (setAuthState({ authed: true })) : (setAuthState({ authed: false }));
   };
     const context = useContext(UserGlobalContext)
 
@@ -31,10 +30,10 @@ var verify = function (response) {
         gender: null,
         birthDate:null,
         isAdmin:0,
-        isDoctor: 0,
-        authed:false
+        isDoctor: 0
     })
     
+        const [AuthState, setAuthState] = useState({authed:false})
     
     const onChangeHandler = (e) => { 
         setState({...state,[e.target.name]:e.target.value})
@@ -43,7 +42,7 @@ var verify = function (response) {
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        if (!state.authed) {
+        if (!AuthState.authed) {
             alert('you should pass the reCaptcha test first!')
         }else{
         if (state.password !== state.password2) {

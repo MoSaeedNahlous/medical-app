@@ -5,7 +5,7 @@ import { UserGlobalContext } from '../../context/userContext/UserState'
 
 const DocSignUpForm = () => {
 var verify = function (response) {
-    response ? (setState({...state,authed:true})) : (setState({...state,authed:false}));
+    response ? (setAuthState({ authed: true })) : (setAuthState({ authed: false }));
   };
     const context = useContext(UserGlobalContext)
 
@@ -29,9 +29,10 @@ var verify = function (response) {
         birthDate:null,
         isAdmin:false,
         isDoctor: true,
-        docSpecialization:'',
-        authed:false
+        docSpecialization:''
     })
+
+    const [AuthState, setAuthState] = useState({authed:false})
 
 
     
@@ -42,7 +43,7 @@ var verify = function (response) {
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        if (!state.authed) {
+        if (!AuthState.authed) {
             alert('you should pass the reCaptcha test first!')
         }else{
         if (state.password !== state.password2) {
