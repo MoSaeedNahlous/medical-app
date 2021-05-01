@@ -13,7 +13,7 @@ export const ReplyGlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(ReplyReducer, intialState)
 
     const AddReply = (replyData) => {
-        axios.post('/api/reply/save', replyData, {
+        axios.post('https://medicasvu.herokuapp.com/api/reply/save', replyData, {
             headers: {
                 "x-access-token":localStorage.getItem('jwtToken')
             }
@@ -30,7 +30,7 @@ export const ReplyGlobalProvider = ({ children }) => {
     }
 
     const GetAllReplies = () => {
-        axios.get('/api/reply/findAll').then((res) => {
+        axios.get('https://medicasvu.herokuapp.com/api/reply/findAll').then((res) => {
             dispatch({
                 type: 'GET_ALL_REPLIES',
                 payload:res.data
@@ -42,7 +42,7 @@ export const ReplyGlobalProvider = ({ children }) => {
     }
 
     const GetReplyById = (replyId) => {
-        axios.get(`/api/reply/findById/${replyId}`).then((res) => {
+        axios.get(`https://medicasvu.herokuapp.com/api/reply/findById/${replyId}`).then((res) => {
             dispatch({
                 type: 'GET_REPLY_BY_ID',
                 //check if payload is res or res.data
@@ -54,7 +54,7 @@ export const ReplyGlobalProvider = ({ children }) => {
     }
 
     const GetRepliesForQuestion = (questionId) => {
-        axios.get('/api/reply/findAll').then((res) => {
+        axios.get('https://medicasvu.herokuapp.com/api/reply/findAll').then((res) => {
             dispatch({
                 type: "GET_REPLIES_FOR_QUESTION",
                 payload: { data:res.data,id:questionId }
@@ -66,7 +66,7 @@ export const ReplyGlobalProvider = ({ children }) => {
         
 
     const CountReplies = () => {
-        axios.get('/api/reply/count').then(res => {
+        axios.get('https://medicasvu.herokuapp.com/api/reply/count').then(res => {
             dispatch({
                 type: 'GET_REPLIES_COUNT',
                 //check if payload is res or res.data
@@ -78,7 +78,7 @@ export const ReplyGlobalProvider = ({ children }) => {
     }
 
     const DeleteReplyById = (replyId) => {
-        axios.delete(`/api/reply/deleteById/${replyId}`).then((res) => {
+        axios.delete(`https://medicasvu.herokuapp.com/api/reply/deleteById/${replyId}`).then((res) => {
             dispatch({
                 type: 'DELETE_REPLY_BY_ID',
                 //check if payload is res or res.data
@@ -91,7 +91,7 @@ export const ReplyGlobalProvider = ({ children }) => {
 
 
     const DeleteAllReplies = () => {
-        axios.delete(`/api/reply/deleteAll`).then((res) => {
+        axios.delete(`https://medicasvu.herokuapp.com/api/reply/deleteAll`).then((res) => {
             dispatch({
                 type: 'DELETE_ALL_REPLIES',
                 //check if payload is res or res.data

@@ -13,7 +13,7 @@ export const UserGlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(UserReducer, intialState)
 
     const AddUser = (userData) => {
-        axios.post('/auth/save', userData).then((res) => {
+        axios.post('https://medicasvu.herokuapp.com/auth/save', userData).then((res) => {
             dispatch({
                 type: 'ADD_USER'
             })
@@ -23,7 +23,7 @@ export const UserGlobalProvider = ({ children }) => {
     }
 
     const LoadUser = async () => {
-        axios.get('/auth/me',
+        axios.get('https://medicasvu.herokuapp.com/auth/me',
             {
                 headers: {
                     'x-access-token': localStorage.getItem('jwtToken')
@@ -41,7 +41,7 @@ export const UserGlobalProvider = ({ children }) => {
   };
 
     const Login = (userData) => {
-        axios.post('/auth/login', userData).then((res) => {
+        axios.post('https://medicasvu.herokuapp.com/auth/login', userData).then((res) => {
             dispatch({
                 type: 'LOGIN_USER',               
                 payload:res.data.token})
@@ -66,7 +66,7 @@ export const UserGlobalProvider = ({ children }) => {
     
 
     const GetAllUsers = () => {
-        axios.get('/api/user/findAll', {
+        axios.get('https://medicasvu.herokuapp.com/api/user/findAll', {
             headers: {
                 'x-access-token': localStorage.getItem('jwtToken')
             }
@@ -83,7 +83,7 @@ export const UserGlobalProvider = ({ children }) => {
     }
 
     const GetUserById = (userId) => {
-        axios.get(`/api/user/findById/${userId}`).then((res) => {
+        axios.get(`https://medicasvu.herokuapp.com/api/user/findById/${userId}`).then((res) => {
             dispatch({
                 type: 'GET_USER_BY_ID',
                 //check if payload is res or res.data
@@ -95,7 +95,7 @@ export const UserGlobalProvider = ({ children }) => {
     }
 
     const CountUsers = () => {
-        axios.get('/api/user/count').then(res => {
+        axios.get('https://medicasvu.herokuapp.com/api/user/count').then(res => {
             dispatch({
                 type: 'GET_USERS_COUNT',
                 //check if payload is res or res.data
@@ -107,7 +107,7 @@ export const UserGlobalProvider = ({ children }) => {
     }
 
     const DeleteUserById = (userId) => {
-        axios.delete(`/api/user/deleteById/${userId}`,{
+        axios.delete(`https://medicasvu.herokuapp.com/api/user/deleteById/${userId}`,{
             headers: {
                 'x-access-token': localStorage.getItem('jwtToken')
             }
@@ -124,7 +124,7 @@ export const UserGlobalProvider = ({ children }) => {
 
 
     const DeleteAllUsers = () => {
-        axios.delete(`/api/user/deleteAll`).then((res) => {
+        axios.delete(`https://medicasvu.herokuapp.com/api/user/deleteAll`).then((res) => {
             dispatch({
                 type: 'DELETE_ALL_USERS',
                 //check if payload is res or res.data
@@ -151,7 +151,7 @@ export const UserGlobalProvider = ({ children }) => {
     }
 
     const UpdateUserById = (userId,user) => {
-        axios.put(`/api/user/update/${userId}`, user).then(res => {
+        axios.put(`https://medicasvu.herokuapp.com/api/user/update/${userId}`, user).then(res => {
             
         }).catch(err => {
             

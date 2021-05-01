@@ -13,7 +13,7 @@ export const QuestionGlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(QuestionReducer, intialState)
 
     const AddQuestion = (questionData) => {
-        axios.post('/api/question/save', questionData, {
+        axios.post('https://medicasvu.herokuapp.com/api/question/save', questionData, {
             headers: {
             "x-access-token":localStorage.getItem('jwtToken')
             }
@@ -28,7 +28,7 @@ export const QuestionGlobalProvider = ({ children }) => {
     }
 
     const GetAllQuestions = () => {
-        axios.get('/api/question/findAll').then((res) => {
+        axios.get('https://medicasvu.herokuapp.com/api/question/findAll').then((res) => {
             dispatch({
                 type: 'GET_ALL_QUESTIONS',
                 payload:res.data 
@@ -39,7 +39,7 @@ export const QuestionGlobalProvider = ({ children }) => {
     }
 
     const incViews = (id) => {
-        axios.get(`/api/question/incViews/${id}`)
+        axios.get(`https://medicasvu.herokuapp.com/api/question/incViews/${id}`)
     }
     const GetQuestionById = (questionId) => {
         axios.get(`/api/question/findById/${questionId}`).then((res) => {
@@ -54,7 +54,7 @@ export const QuestionGlobalProvider = ({ children }) => {
     }
 
     const CountQuestions = () => {
-        axios.get('/api/question/count').then(res => {
+        axios.get('https://medicasvu.herokuapp.com/api/question/count').then(res => {
             dispatch({
                 type: 'GET_QUESTIONS_COUNT',
                 //check if payload is res or res.data
@@ -66,7 +66,7 @@ export const QuestionGlobalProvider = ({ children }) => {
     }
 
     const DeleteQuestionById = (questionId) => {
-        axios.delete(`/api/question/deleteById/${questionId}`,{
+        axios.delete(`https://medicasvu.herokuapp.com/api/question/deleteById/${questionId}`,{
             headers: {
             "x-access-token":localStorage.getItem('jwtToken')
             }
@@ -83,7 +83,7 @@ export const QuestionGlobalProvider = ({ children }) => {
 
 
     const DeleteAllQuestions = () => {
-        axios.delete(`/api/question/deleteAll`).then((res) => {
+        axios.delete(`https://medicasvu.herokuapp.com/api/question/deleteAll`).then((res) => {
             dispatch({
                 type: 'DELETE_ALL_QUESTIONS',
                 //check if payload is res or res.data
@@ -109,7 +109,7 @@ export const QuestionGlobalProvider = ({ children }) => {
     }
 
     const UpdateQuestionById =(questionId,question)=>{
-        axios.put(`/api/question/update/${questionId}`,question).then(res=>{
+        axios.put(`https://medicasvu.herokuapp.com/api/question/update/${questionId}`,question).then(res=>{
             dispatch({
                 type: 'UPDATE_QUESTION_BY_ID',
                 

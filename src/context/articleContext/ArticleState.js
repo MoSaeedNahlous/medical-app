@@ -32,7 +32,7 @@ export const ArticleGlobalProvider = ({ children }) => {
     }
 
     const incViews = (id) => {
-        axios.get(`/api/article/incViews/${id}`)
+        axios.get(`https://medicasvu.herokuapp.com/api/article/incViews/${id}`)
     }
 
     const GetAllArticles = () => {
@@ -49,7 +49,7 @@ export const ArticleGlobalProvider = ({ children }) => {
     }
 
     const GetArticleById = (articleId) => {
-        axios.get(`/api/article/findById/${articleId}`).then((res) => {
+        axios.get(`https://medicasvu.herokuapp.com/api/article/findById/${articleId}`).then((res) => {
             console.log(res.data);
             dispatch({
                 type: 'GET_ARTICLE_BY_ID',
@@ -61,7 +61,7 @@ export const ArticleGlobalProvider = ({ children }) => {
     }
 
     const CountArticles = () => {
-        axios.get('/api/article/count').then(res => {
+        axios.get('https://medicasvu.herokuapp.com/api/article/count').then(res => {
             dispatch({
                 type: 'GET_ARTICLES_COUNT',
                 payload:res.data
@@ -72,7 +72,7 @@ export const ArticleGlobalProvider = ({ children }) => {
     }
 
     const DeleteArticleById = (articleId) => {
-        axios.delete(`/api/article/deleteById/${articleId}`, {
+        axios.delete(`https://medicasvu.herokuapp.com/api/article/deleteById/${articleId}`, {
             headers: {
             "x-access-token":localStorage.getItem('jwtToken')
             }
@@ -88,7 +88,7 @@ export const ArticleGlobalProvider = ({ children }) => {
 
 
     const DeleteAllArticles = () => {
-        axios.delete(`/api/article/deleteAll`).then((res) => {
+        axios.delete(`https://medicasvu.herokuapp.com/api/article/deleteAll`).then((res) => {
             dispatch({
                 type: 'DELETE_ALL_ARTICLES',
                 payload:res.data
@@ -99,7 +99,7 @@ export const ArticleGlobalProvider = ({ children }) => {
     }
 
     const UpdateArticleById =(articleId,article)=>{
-        axios.put(`/api/article/update/${articleId}`,article).then(res=>{
+        axios.put(`https://medicasvu.herokuapp.com/api/article/update/${articleId}`,article).then(res=>{
             dispatch({
                 type: 'UPDATE_ARTICLE_BY_ID',
                 
