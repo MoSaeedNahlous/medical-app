@@ -123,7 +123,7 @@ const SignUpForm = () => {
 
                 <div>
                     <Recaptcha
-                        sitekey='6Ler_qMaAAAAAF-fudkxWddQyF_Jr5KHgu3nnLeJ'
+                        sitekey='6Ldfe8EaAAAAANlyY6W6_p0wbPf8yxUQXpCJvYwf'
                         render='explicit'
                         verifyCallback={verify}
                     />
