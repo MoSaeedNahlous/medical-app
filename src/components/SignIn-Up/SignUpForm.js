@@ -43,7 +43,7 @@ var verify = function (response) {
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        if (state.authed) {
+        if (!state.authed) {
             alert('you should pass the reCaptcha test first!')
         }else{
         if (state.password !== state.password2) {
