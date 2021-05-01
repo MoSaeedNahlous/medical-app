@@ -22,9 +22,9 @@ const QuestionsGrid = () => {
         )
     }
     return (
-        <div style={{paddingTop:'8%'}}>
+        <div style={{paddingTop:'8%'}} >
             <h2>Questions</h2>
-        <div className="questions-grid-container">
+        <div className="questions-grid-container" data-aos="fade-right" data-aos-duration="3000">
                 {
                     questions === [] ? (<h2>No questions to be found..</h2>) : (
                         questions.slice(0,2).map((question) => {

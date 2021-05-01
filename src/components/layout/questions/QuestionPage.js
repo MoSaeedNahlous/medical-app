@@ -115,7 +115,7 @@ const QuestionPage = ({ match }) => {
             </div>
             )}
             <br/>
-            <div className="replies-block">
+            <div className="replies-block" data-aos="fade-up" data-aos-duration="3000">
                 
                 <br />
                 {replies === null ? (

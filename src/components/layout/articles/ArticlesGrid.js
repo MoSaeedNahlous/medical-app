@@ -22,9 +22,9 @@ const ArticlesGrid = () => {
         )
     }
     return (
-        <div style={{paddingTop:'8%'}} data-aos="fade-right">
+        <div style={{paddingTop:'8%'}} >
             <h2>Articles</h2>
-        <div className="articles-grid-container">
+        <div className="articles-grid-container" data-aos="fade-left" data-aos-duration="3000">
                 {
                     articles === [] ? (<h2>No articles to be found..</h2>) : (
                         articles.slice(0,3).map((article) => {
