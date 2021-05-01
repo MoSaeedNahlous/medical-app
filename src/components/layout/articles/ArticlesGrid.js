@@ -22,7 +22,7 @@ const ArticlesGrid = () => {
         )
     }
     return (
-        <div style={{paddingTop:'8%'}} data-aos="fade-right">
+        <div style={{paddingTop:'8%'}}>
             <h2>Articles</h2>
         <div className="articles-grid-container">
                 {
