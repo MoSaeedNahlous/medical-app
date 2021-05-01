@@ -13,7 +13,7 @@ export const UserGlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(UserReducer, intialState)
 
     const AddUser = (userData) => {
-        axios.post('https://medicasvu.herokuapp.com/auth/save', userData).then((res) => {
+        axios.post('https://medicasvu.herokuapp.com/auth/register', userData).then((res) => {
             dispatch({
                 type: 'ADD_USER'
             })
