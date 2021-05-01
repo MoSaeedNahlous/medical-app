@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Question = ({ text, date, id, views, subject }) => {
-    text = text.slice(0,150)
+    text = text.slice(0,100)
     return (
         <div className="question-main-container">
             <h5>{subject}</h5>
